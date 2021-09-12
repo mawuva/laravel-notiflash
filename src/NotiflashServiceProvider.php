@@ -2,7 +2,9 @@
 
 namespace Mawuekom\Notiflash;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Mawuekom\Notiflash\Notiflash;
 
 class NotiflashServiceProvider extends ServiceProvider
 {
@@ -11,6 +13,8 @@ class NotiflashServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        require_once __DIR__.'/helpers.php';
+
         /*
          * Optional methods to load your package assets
          */
@@ -19,9 +23,11 @@ class NotiflashServiceProvider extends ServiceProvider
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
+        $this ->registerBladeDirective();
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('notiflash.php'),
+                __DIR__.'/../config/notiflash.php' => config_path('notiflash.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,11 +56,22 @@ class NotiflashServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'notiflash');
+        $this->mergeConfigFrom(__DIR__.'/../config/notiflash.php', 'notiflash');
 
         // Register the main class to use with the facade
         $this->app->singleton('notiflash', function () {
-            return new Notiflash;
+            return $app->make(Notiflash::class);
+        });
+    }
+
+    public function registerBladeDirective(): void
+    {
+        Blade::directive('notiflashCss', function () {
+            return '<?php echo notiflashCss(); ?>';
+        });
+
+        Blade::directive('notiflashJs', function () {
+            return '<?php echo notiflashJs(); ?>';
         });
     }
 }
