@@ -1,13 +1,13 @@
 <?php
 
-namespace Mawuekom\LaravelNotiflash;
+namespace Mawuekom\Notiflash;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Mawuekom\LaravelNotiflash\Skeleton\SkeletonClass
+ * @see \Mawuekom\Notiflash\Skeleton\SkeletonClass
  */
-class LaravelNotiflashFacade extends Facade
+class NotiflashFacade extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -16,6 +16,6 @@ class LaravelNotiflashFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'laravel-notiflash';
+        return 'notiflash';
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-namespace Mawuekom\LaravelNotiflash;
+namespace Mawuekom\Notiflash;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelNotiflashServiceProvider extends ServiceProvider
+class NotiflashServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -14,29 +14,29 @@ class LaravelNotiflashServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-notiflash');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-notiflash');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'notiflash');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'notiflash');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('laravel-notiflash.php'),
+                __DIR__.'/../config/config.php' => config_path('notiflash.php'),
             ], 'config');
 
             // Publishing the views.
             /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-notiflash'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/notiflash'),
             ], 'views');*/
 
             // Publishing assets.
             /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-notiflash'),
+                __DIR__.'/../resources/assets' => public_path('vendor/notiflash'),
             ], 'assets');*/
 
             // Publishing the translation files.
             /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-notiflash'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/notiflash'),
             ], 'lang');*/
 
             // Registering package commands.
@@ -50,11 +50,11 @@ class LaravelNotiflashServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-notiflash');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'notiflash');
 
         // Register the main class to use with the facade
-        $this->app->singleton('laravel-notiflash', function () {
-            return new LaravelNotiflash;
+        $this->app->singleton('notiflash', function () {
+            return new Notiflash;
         });
     }
 }
