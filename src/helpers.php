@@ -37,6 +37,36 @@ if (! function_exists('notiflash_alert')) {
     }
 }
 
+if (! function_exists('notiflash_message')) {
+    /**
+     * Set notiflah alert
+     * 
+     * @param string $type
+     * @param string $message
+     * @param string|null $title
+     * 
+     * @return \Mawuekom\Notiflash\Notiflash
+     */
+    function notiflash_message(string $type, string $message, string $title = null): Notiflash {
+        return app('notiflash')->messageAlert($type, $message, $title);
+    }
+}
+
+if (! function_exists('notiflash_toast')) {
+    /**
+     * Set notiflah alert
+     * 
+     * @param string $type
+     * @param string $message
+     * @param string|null $title
+     * 
+     * @return \Mawuekom\Notiflash\Notiflash
+     */
+    function notiflash_toast(string $type, string $message, string $title = null): Notiflash {
+        return app('notiflash')->toast($type, $message, $title);
+    }
+}
+
 if (! function_exists('notiflash_type_class')) {
     /**
      * Get notiflah type's class
