@@ -24,6 +24,20 @@ class Notiflash
     }
 
     /**
+     * Flash a success message.
+     *
+     * @param  string  $message
+     * @param  string|null  $title
+     * @return $this
+     */
+    public function success(string $message, string $title = null): self
+    {
+        $this->flash($message, 'success', 'flaticon2-check-mark', 'toast', $title);
+
+        return $this;
+    }
+
+    /**
      * Return an alert notiflash.
      *
      * @param  string  $type

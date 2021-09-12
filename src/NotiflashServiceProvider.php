@@ -59,7 +59,7 @@ class NotiflashServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/notiflash.php', 'notiflash');
 
         // Register the main class to use with the facade
-        $this->app->singleton('notiflash', function () {
+        $this->app->singleton('notiflash', function ($app) {
             return $app->make(Notiflash::class);
         });
     }
