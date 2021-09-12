@@ -36,9 +36,9 @@ class NotiflashServiceProvider extends ServiceProvider
             ], 'views');*/
 
             // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/notiflash'),
-            ], 'assets');*/
+            $this->publishes([
+                __DIR__.'/../public' => public_path('vendor/notiflash'),
+            ], 'assets');
 
             // Publishing the translation files.
             /*$this->publishes([
