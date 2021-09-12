@@ -10,6 +10,8 @@ You can install the package via composer:
 composer require mawuekom/laravel-notiflash
 ```
 
+php artisan vendor:publish --provider="Mawuekom\Notiflash\NotiflashServiceProvider" --tag="assets"
+
 ## Usage
 
 ```php

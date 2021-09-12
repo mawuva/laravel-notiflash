@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.3.3",
+    "animate.css": "^4.1.1",
     "bulma": "^0.9.3"
   }
 }

@@ -54,3 +54,12 @@ if (! function_exists('notiflashJs')) {
         return '<script type="text/javascript" src="'.asset('vendor/notiflash/js/app.js').'"></script>';
     }
 }
+
+if (! function_exists('bulmaToast')) {
+    /**
+     * @return string
+     */
+    function bulmaToast(): string {
+        return '<script type="text/javascript" src="'.asset('vendor/notiflash/js/bulma-toast.min.js').'"></script>';
+    }
+}

@@ -3,6 +3,8 @@
 @import "bulma/sass/elements/notification.sass";
 @import "bulma/sass/components/message.sass";
 
+@import "animate.css/animate.css";
+
 .delete {
     @extend %delete
 }

@@ -71,7 +71,11 @@ class NotiflashServiceProvider extends ServiceProvider
         });
 
         Blade::directive('notiflashJs', function () {
-            return '<?php echo notiflashJs(); ?>';
+            return '<?php echo notiflashJs(); echo bulmaToast(); ?>';
+        });
+
+        Blade::directive('notiflashAssets', function () {
+            return '<?php echo notiflashCss(); echo notiflashJs(); echo bulmaToast(); ?>';
         });
     }
 }
