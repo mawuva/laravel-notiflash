@@ -38,12 +38,6 @@ Or
 php artisan vendor:publish --provider="Mawuekom\Notiflash\NotiflashServiceProvider" --tag="assets"
 ```
 
-Or you can publish config
-
-```bash
-php artisan vendor:publish --provider="Mawuekom\Notiflash\NotiflashServiceProvider" --tag="config"
-```
-
 Now that we have published a few new files to our application we need to reload them with the following command:
 
 ```bash
