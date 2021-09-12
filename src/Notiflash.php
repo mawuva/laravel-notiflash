@@ -52,6 +52,34 @@ class Notiflash
     }
 
     /**
+     * Return an alert notiflash.
+     *
+     * @param  string  $type
+     * @param  string  $message
+     * @return $this
+     */
+    public function toast(string $type, string $message, string $title = null): self
+    {
+        $this->flash($message, $type, null, 'toast', $title);
+
+        return $this;
+    }
+
+    /**
+     * Return an alert notiflash.
+     *
+     * @param  string  $type
+     * @param  string  $message
+     * @return $this
+     */
+    public function messageAlert(string $type, string $message, string $title = null): self
+    {
+        $this->flash($message, $type, null, 'message', $title);
+
+        return $this;
+    }
+
+    /**
      * Flash a message.
      *
      * @param  string  $message

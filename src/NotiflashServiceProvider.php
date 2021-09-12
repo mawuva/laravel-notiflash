@@ -5,6 +5,7 @@ namespace Mawuekom\Notiflash;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Mawuekom\Notiflash\Notiflash;
+use Mawuekom\Notiflash\View\Components\NotiflashComponent;
 
 class NotiflashServiceProvider extends ServiceProvider
 {
@@ -19,11 +20,12 @@ class NotiflashServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'notiflash');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'notiflash');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'notiflash');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
         $this ->registerBladeDirective();
+        $this->registerComponents();
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -62,6 +64,11 @@ class NotiflashServiceProvider extends ServiceProvider
         $this->app->singleton('notiflash', function ($app) {
             return $app->make(Notiflash::class);
         });
+    }
+
+    public function registerComponents(): void
+    {
+        Blade::component(NotiflashComponent::class, 'notiflash-messages');
     }
 
     public function registerBladeDirective(): void

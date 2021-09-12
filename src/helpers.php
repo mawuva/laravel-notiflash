@@ -22,7 +22,7 @@ if (! function_exists('notiflash')) {
     }
 }
 
-if (! function_exists('alert')) {
+if (! function_exists('notiflash_alert')) {
     /**
      * Set notiflah alert
      * 
@@ -32,8 +32,65 @@ if (! function_exists('alert')) {
      * 
      * @return \Mawuekom\Notiflash\Notiflash
      */
-    function alert(string $type, string $message, string $title = null): Notiflash {
+    function notiflash_alert(string $type, string $message, string $title = null): Notiflash {
         return app('notiflash')->alert($type, $message, $title);
+    }
+}
+
+if (! function_exists('notiflash_type_class')) {
+    /**
+     * Get notiflah type's class
+     * 
+     * @return string
+     */
+    function notiflash_type_class(): string {
+        $type_class = 'is-link';
+
+        if (notiflash_get('type') === 'success') {
+            $type_class = 'is-success';
+        }
+
+        if (notiflash_get('type') === 'info') {
+            $type_class = 'is-info';
+        }
+
+        if (notiflash_get('type') === 'warning') {
+            $type_class = 'is-warning';
+        }
+
+        if (notiflash_get('type') === 'error') {
+            $type_class = 'is-error';
+        }
+
+        return $type_class;
+    }
+}
+
+if (! function_exists('notiflash_get')) {
+    /**
+     * Get instance of Notiflash
+     * 
+     * @param string $resource
+     * @param string $title
+     * 
+     * @return string
+     */
+    function notiflash_get(string $resource = null): string {
+        return session()->get('notiflash.'.$resource);
+    }
+}
+
+if (! function_exists('notiflash_has')) {
+    /**
+     * Get instance of Notiflash
+     * 
+     * @param string $resource
+     * @param string $title
+     * 
+     * @return string
+     */
+    function notiflash_has(string $resource = null): string {
+        return session()->has('notiflash.'.$resource);
     }
 }
 
